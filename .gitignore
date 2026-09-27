@@ -1,0 +1,6 @@
+__pycache__/
+.vscode/
+user_uploads/
+static/reels/
+ffmpeg-master-latest-win64-gpl-shared/
+config.py

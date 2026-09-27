@@ -1,4 +1,0 @@
-file 'BG2.webp'
-duration 2
-file 'BG2.webp'
-duration 2

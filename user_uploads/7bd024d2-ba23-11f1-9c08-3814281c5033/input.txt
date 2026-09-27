@@ -1,4 +1,0 @@
-file 'cimg8.webp'
-duration 2
-file 'NFood2.webp'
-duration 2
