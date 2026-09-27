@@ -1,0 +1,6 @@
+file 'BG5.webp'
+duration 2
+file 'Indian_Kitchen_Logo.webp'
+duration 2
+file 'img4-removebg-preview.webp'
+duration 2

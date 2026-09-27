@@ -1,0 +1,4 @@
+file 'BG5.webp'
+duration 2
+file 'img5-removebg-preview.webp'
+duration 2

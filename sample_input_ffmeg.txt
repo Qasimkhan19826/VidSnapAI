@@ -1,0 +1,16 @@
+file 'static/1.jpg'
+duration 1
+file 'static/2.jpg'
+duration 1
+file 'static/3.jpg'
+duration 1
+file 'static/4.jpg'
+duration 1
+file 'static/5.jpg'
+duration 2 
+
+This is used as a refernece ,that how we can take input ,from the user with the help 
+of ffmpeg command 
+
+So we will go to the main.py than create a pipeline to save our files in a folder ,
+append the files in a folder ,just how you are seeing at the top (file 'static/1.jpg').

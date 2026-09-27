@@ -31,6 +31,8 @@ def create():
         rec_id= request.form.get("uuid") # Id from html form (name=uuid) when use print()
         desc = request.form.get("text") # User input text (name=text)
         # This will give you file name in the terminal dict_keys(['file1', 'file2'])
+        # 9 Taking all files in a list
+        input_files = []
         for key, value in request.files.items():
             print(key,value)
             # Output :file1 <FileStorage: 'Indian_Kitchen_Logo.webp' ('image/webp')>  file2 <FileStorage: 'img2-removebg-preview.webp' ('image/webp')>
@@ -38,7 +40,7 @@ def create():
             # Roses are Read and the sky is blue.(Text)
             # file1 <FileStorage: 'img2-removebg-preview.webp' ('image/webp')>
             # file2 <FileStorage: 'img2-removebg-preview.webp' ('image/webp')>
-
+            
             # 4. Upload the file (Here we will go to the documentation ,for file uploading in flask)
             file = request.files[key] # It is copied from the doc
             if file: # Always True
@@ -47,16 +49,27 @@ def create():
                 if(not(os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],rec_id)))):
                     os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'],rec_id)) # error 1 handle (Directory created)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'],rec_id, filename))# Here we get an 1error (Because we not create a directory )
+                input_files.append(file.filename) # 9 
                 # 5.Capture the description and save it to a file 
                 with open(os.path.join(app.config['UPLOAD_FOLDER'],rec_id, "desc.txt"),"w") as f:
                     f.write(desc)
-                    # Here ,We are taking uploaded folder ,this is and creating a file desc.txt to collect text
+                    # 9.Here ,We are taking uploaded folder ,this is and creating a file desc.txt to collect text
+        for fl in input_files: # Taking files and moving the files to a folder for further processing .
+            # 9 .So here we have folder/rec_diary/input.txt
+            with open(os.path.join(app.config['UPLOAD_FOLDER'],rec_id, "input.txt"),"a") as f:
+                # f.write(f"file 'file1.jpg'") 
+                f.write(f"file '{fl}'\nduration 2\n") # Giving files / uploadfolders /recvied_id and at last giving duration for 1 sec .
+                # This will happen for all the input files 
+
     return render_template("create.html",myid=myid)# Passing the Id 
      
 
 @app.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    # 10 Final Stage ,To show our reels in the gallery .
+    reels = os.listdir("static/reels")
+    print(reels)
+    return render_template("gallery.html",reels=reels) # 10 Passing the reels 
 
 app.run(debug=True)
 # 1.This is Python Flask end Points .
