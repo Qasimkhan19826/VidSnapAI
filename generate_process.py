@@ -33,7 +33,7 @@ def create_reel(folder):
     ''' 
 # My Command 
     # command = f'''ffmpeg -f concat -safe 0 -i user_uploads/{folder}/input.txt -i user_uploads/{folder}/audio.mp3 -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black" -c:v libx264 -c:a aac -shortest -r 30 -pix_fmt yuv420p static/reels/{folder}.mp4'''
-    print("CR - ", folder)
+    # print("CR - ", folder)
 # ChatGpt Command  
     command = f'''ffmpeg -loop 1 -t 3 -i user_uploads/{folder}/image1.jpg -loop 1 -t 3 -i user_uploads/{folder}/image2.jpg -loop 1 -t 3 -i user_uploads/{folder}/image3.jpg -i user_uploads/{folder}/audio.mp3 -filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,zoompan=z='min(zoom+0.0015,1.1)':d=90:s=1080x1920:fps=30[v0];[1:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,zoompan=z='min(zoom+0.0015,1.1)':d=90:s=1080x1920:fps=30[v1];[2:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,zoompan=z='min(zoom+0.0015,1.1)':d=90:s=1080x1920:fps=30[v2];[v0][v1]xfade=transition=fade:duration=0.5:offset=2.5[x1];[x1][v2]xfade=transition=fade:duration=0.5:offset=5[x2]" -map "[x2]" -map 3:a -c:v libx264 -crf 20 -preset medium -c:a aac -b:a 192k -shortest -pix_fmt yuv420p -movflags +faststart static/reels/{folder}.mp4'''
     
